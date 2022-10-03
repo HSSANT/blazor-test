@@ -1,0 +1,41 @@
+﻿::deep .nav-link {
+    color: black !important;
+    font-weight:bolder!important;
+}
+
+::deep .dropdown {
+    width: 120px!important;
+    text-align: center!important;
+}
+
+::deep .navbar-light  {
+    color: black!important;
+}
+
+.search-input {
+    background-color: red !important;
+    transform: translate(-15vw)!important;
+    width: 155vw!important;
+}
+
+.droptoggle {
+    color: pink !important;
+}
+
+::deep .navbar-toggler {
+    color: black!important;
+}
+
+/* change navbar background on collapse */
+@media (max-width: 768px) {
+    nav.navbar {
+        background: black!important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    ::deep .navbar-nav .dropdown {
+        position: absolute !important;
+        right: 30px !important;
+    }
+}

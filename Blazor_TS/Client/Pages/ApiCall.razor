@@ -1,0 +1,71 @@
+﻿@page "/apicall"
+@using Blazor_TS.Shared;
+@inject HttpClient Http
+
+<h1>Call web API from a Blazor Server Razor component</h1>
+<br />
+
+<HxInputNumber  Label="Zip Code" Decimals="0" TValue="int?" @bind-Value="inputZip" />
+<br />
+<HxButton @onclick="onClick"  Icon="BootstrapIcon.Search" Text="Search" Outline=true Color="ThemeColor.Secondary" />
+@if (!showInfo)
+{
+    <p>Enter a valid zipcode ....</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Post Code</th>
+                <th>Country Name</th>
+                <th>Country Abbreviation</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (country?.CountryName?.Length > 0)
+            {
+                <tr>
+                    <td>@country.PostCode</td>
+                    <td>@country.CountryName</td>
+                    <td>@country.CountryAbbreviation</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private int? inputZip;
+    private bool showInfo;
+    private bool shouldRender;
+    private Country? country;
+
+    protected override bool ShouldRender() => shouldRender;
+
+
+    private async Task  onClick() {
+        using (var client = new HttpClient())
+        {
+            client.BaseAddress = new Uri("https://api.zippopotam.us/us/" + inputZip.ToString());
+            client.DefaultRequestHeaders.Clear();
+            var response = await client.GetAsync(client.BaseAddress);
+            if (response.IsSuccessStatusCode)
+            {
+                country = response.Content.ReadFromJsonAsync<Country>().Result;
+                await Task.Delay(1500);
+                showInfo = true;
+                Console.WriteLine(country?.CountryName);
+
+            }
+            else
+            {
+                showInfo = false;
+            }
+        }
+        shouldRender = true;
+    }
+
+
+}

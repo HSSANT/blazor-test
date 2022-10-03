@@ -1,0 +1,21 @@
+﻿
+
+@page "/"
+    <PageTitle>Blazor Tech Interview</PageTitle>
+    <HxCarousel>
+        <HxCarouselItem Active="true">
+            <div class="video-coverlay">
+                <h1 class="video-coverlay-text">XPO is the innovation leader in truck brokerage and less-than-truckload freight transportation</h1>
+                <video poster="video/thumb.png" autoplay playsinline muted loop>
+                    <source src="video/video.mp4" type="video/mp4">
+                </video>
+                <div class="position-absolute top-100 start-50 translate-middle video-button-group">
+                    <HxButtonGroup>
+                        <HxButton CssClass="height-82" Size="ButtonSize.Large" Text="Track a Blazor" Color="ThemeColor.Secondary" Outline="true" />
+                        <HxButton CssClass="height-82" Size="ButtonSize.Large" Text="Work With US" Color="ThemeColor.Secondary" Outline="true" />
+                        <HxButton CssClass="height-82" Size="ButtonSize.Large" Text="Invest in US" Color="ThemeColor.Secondary" Outline="true" />
+                    </HxButtonGroup>
+                </div>
+            </div>
+        </HxCarouselItem>
+    </HxCarousel>

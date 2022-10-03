@@ -1,0 +1,42 @@
+﻿
+
+<HxNavbar ColorScheme="NavbarColorScheme.Light" >
+    
+    <HxNavbarToggler />
+    <HxNavbarCollapse >
+        <HxNav CssClass="me-auto mb-0 mb-lg-0">
+            <div style="display:flex;align-items:center;margin-left:10em;">
+                <HxNavbarBrand CssClass="m-0 ms-5 pl-5">
+                    <strong style="color:red;">Bla</strong><strong style="color:black;">zor TI</strong>
+                </HxNavbarBrand>
+            </div>
+            <HxNavLink Href="">Home</HxNavLink>
+            <HxNavLink Href="counter">Counter</HxNavLink>
+            <HxNavLink Href="fetchdata">Fetch Data</HxNavLink>
+            <HxNavLink Href="apicall">Api Call</HxNavLink>
+            <HxNavLink Href="https://docs.microsoft.com/aspnet/">About</HxNavLink>
+            <HxDropdown style="position: absolute!important; right:250px!important">
+                <HxDropdownToggleElement ElementName="div" CssClass="bg-danger p-3 text-white w-100 text-center droptoggle " role="button">
+                    Search
+                    <HxIcon Icon="BootstrapIcon.Search" />
+                </HxDropdownToggleElement>
+                
+                    <HxDropdownContent CssClass="px-4 py-3 pl-5">
+                        <EditForm CssClas="m-0" Model="@query">
+                            <div class="d-flex">
+                                <HxInputText CssClass="me-2" Placeholder="Search" @bind-Value="@query" />
+                                <HxSubmit Color="ThemeColor.Danger" Outline="true">Search</HxSubmit>
+                            </div>
+                        </EditForm>
+                    </HxDropdownContent>
+                
+                </HxDropdown>
+            </HxNav>
+
+        
+    </HxNavbarCollapse>
+</HxNavbar>
+
+@code {
+    private string query = String.Empty;
+}
